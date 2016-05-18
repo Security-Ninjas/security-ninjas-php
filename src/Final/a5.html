@@ -24,47 +24,40 @@
 		<!-- Nav -->
 			<nav id="nav">
 				<ul class="container">
-					<img src="images/ninja.png" alt="" width="8.5%" height="8.5%" align="left" />
 					<li><a href="a1.html">A1</a></li>
 					<li><a href="a2.html">A2</a></li>
 					<li><a href="a3.html">A3</a></li>
 					<li><a href="a4.html">A4</a></li>
-					<li><a href="a5.html">A5</a></li>
+					<li><a href="a5.html" class="active">A5</a></li>
 					<li><a href="a6.html">A6</a></li>
 					<li><a href="a7.html">A7</a></li>
 					<li><a href="a8.html">A8</a></li>
 					<li><a href="a9.html">A9</a></li>
 					<li><a href="a10.html">A10</a></li>
-					<!-- <li><img src="images/opendns_logo.png" alt="" width="65.5%" height="65.5%" align="right" /> -->
 				</ul>
 			</nav>
 			<div class="wrapper style2">
 				<article id="work">
-					
-						<h5>A5 : Security Misconfiguration</h5>
-					
-				
 					<div class="container">
 
 						Which meme is funnier?
 
-						<br><a href="a5.php?fname=meme1.html" target="_blank">Meme1</a>
+						<br><a href="meme.php?fname=meme1.htm" target="_blank">Meme1</a>
+						||
+						<a href="vote.php?meme=meme1" target="_blank">Vote for it!</a>
 
-						<br><a href="a5.php?fname=meme2.html" target="_blank">Meme2</a>
-			
+						<br><a href="meme.php?fname=meme2.htm" target="_blank">Meme2</a>
+						||
+						<a href="vote.php?meme=meme2" target="_blank">Vote for it!</a>
 					</div>
 					
 				</article>
 			</div>
 
-		
-		
 			<div class="wrapper style4">
 				<article id="contact" class="container small">
 					<header>
-				
-						<p>There is a File Inclusion vulnerability here. Leverage the Security Misconfiguration to exploit the badness.
-						</p>
+						<p>Mission: Steal the username and password for the voting database.</p>
 					</header>
 					<div class="row">
 							<div class="12u">
@@ -72,14 +65,14 @@
 							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'hint1');"> Hint 1 </H5>
 							<DIV id="hint1" style="display:none">
 							<P>
-							Access to files in other directories is not prohibited
+							The 'fname' parameter of meme.php isn't restricted very well.
 							</P>
 							</DIV></li>
 
 							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'hint2');"> Hint 2 </H5>
 							<DIV id="hint2" style="display:none">
 							<P>
-							Can you get to sensitive files like /etc/passwd?
+							Look at the source for vote.php
 							</P>
 							
 							</DIV></li>
@@ -87,14 +80,14 @@
 							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'solution');"> Solution </H5>
 							<DIV id="solution" style="display:none">
 							<P>
-							Fetch sensitive files by changing the fname parameter e.g., fname=../../../../../etc/passwd
+							Fetch config.php<br/>
+							e.g.: <a href="/meme.php?fname=config.php">/meme.php?fname=config.php</a>
 							</P>
 							
 							</DIV></li>
 							
 							</ul>
 							</div>
-						
 					</div>
 					<footer>
 						<ul id="copyright">

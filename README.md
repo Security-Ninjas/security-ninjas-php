@@ -1,81 +1,42 @@
-# Security_Ninjas_AppSec_Training
-OpenDNS Security Ninjas AppSec Training
+# Security Ninjas: An Open Source AppSec Training
 
-Slide deck link-> http://www.slideshare.net/OpenDNS/security-ninjas-opensource
+This hands-on training lab consists of 10 fun real world like hacking exercises, corresponding to each of the OWASP Top 10 vulnerabilities. Hints and solutions are provided along the way. Although the backend for this is written in PHP, vulnerabilities would remain the same across all web based languages, so the training is still relevant even if you don't actively code in PHP. 
 
-This hands-on training lab consists of 10 fun real world like hacking exercises, corresponding to each of the OWASP Top 10 vulnerabilities. Hints and solutions are provided along the way. Although the backend for this is written in PHP, vulnerabilities would remain the same across all web based languages, so the training would still be relevant even if you don’t actively code in PHP. 
-
-Making the Hands-on Lab Work:
-
-Docker instructions
-
-I would highly recommend that you run the training in a docker container because of the following:
-
-1. Setting up and destroying the environment would be super easy and quick.
-
-2. The docker container would be sandboxed which means that the vulnerable application wouldn’t be able to harm the host OS.
+This iteration of the course has been updated from the [original verion](https://engineering.opendns.com/2015/03/16/security-ninjas-an-open-source-application-security-training-program/) published by OpenDNS. It can be run self-contained, or as the hand-on portion of a more complete training program. 
 
 
-Setup:
+### To run the lab image
 
-1. Setup docker https://docs.docker.com/installation/. There are many ways to do this depending on the OS you use.
+1. Install [docker](https://docs.docker.com/installation/) and make sure it works.
 
-2. Make sure docker has been installed correctly by running ‘docker version’.
+2. Start the container by running the following command (select an appropriate host port, 8000 here):
 
-3. Start the Application Security Training container by running the following command (I chose port 8899 to avoid port allocation conflicts):
-    'docker run -d -p 8899:80 opendns/security-ninjas'
+    docker run -it --rm -p 8000:80 cniemira/security-ninjas
 
-4. Get the IP address of your container:
-    In my case the command was ‘boot2docker ip’ as I was running docker using boot2docker
+3. Determine the IP address of your container
+    Likely, 'localhost' will do. If you're using 'docker-machine' you will need to determine the VM IP.
 
-5. Go to your web browser and enter {IP address from step 4}:8899
-
-6. The training should be running now.
+4. The training should be running now.
 	
-7. Kill the container after you are done.
-    Go back to the terminal and type ‘docker ps’. Get the container id of the training
-
-8. Then run ‘docker kill {container id}’
 
 
-Running it using a web server:
+### To use the lab
 
-If for some reason you are not able to run the training in a docker container, you may also run it using a web server. 
+1. Select a browser to use during the lab. [Chrome](https://google.com/chrome) or [Firefox](https://mozilla.org/firefox) are recommended.
 
-1. Download a web server (like Apache) and PHP.
+2. Install a cookie viewer/editor plugin such as [Cookies](https://chrome.google.com/webstore/detail/cookies/iphcomljdfghbkdcfndaijbokpgddeno?hl=en-US) for Chrome or [Cookie Manager+](https://addons.mozilla.org/en-US/firefox/addon/cookies-manager-plus/) for Firefox.
 
-2. Download the source code from here and put it in the directory where the web server looks for files to serve.
+3. Install [ZAP](https://www.owasp.org/index.php/ZAP) and start it
 
-3. In the Security Ninjas sub-directory, change text file permissions - 'chmod 777 *.txt'
+4. Install the [FoxyProxy](https://getfoxyproxy.org/) plugin for your browser. Then: 
+    - Configure a new proxy to use 127.0.0.1:8080 for the pattern "http://localhost:8000/\*" (use the correct location of your docker container).
+    - Tell FoxyProxy to "Use proxies based on their pre-defined patterns and priorities."
 
-4. Make sure WHOIS is installed on the web server.
+5. Browse to [http://localhost:8000](http://localhost:8000) (or wherever the docker container is running).
 
-5. Start the web server and reach the application from your web browser.
+6. Click on the ninja to see the first exercise.
 
-
-The following steps are optional but recommended:
-
-1. Install Firefox.
-
-2. Install the FoxyProxy plugin for Firefox. Then: 
-    - In select mode: Use proxy “Default” for all URLs. 
-    - Configure the Default proxy to use 127.0.0.1:8080. 
-
-3. You can delete or disable this plugin after the exercise.
-
-4. Install Burp Suite free from http://portswigger.net/burp/download.html. You could use some other proxy tool as well.
-
-5. You can get some basic Burp Suite tutorials from http://portswigger.net/burp/tutorials/
-
-6. You can turn the proxy off for most of the exercises but for some, having the intercept on would make it much easier to inspect and alter the HTTP requests.
-
-7. Run the training in Firefox.
-
----
-Suggestions or Comments? 
-
-We would love to get some feedback! You can reach me directly at shruti@opendns.com. Happy hacking!
-
+7. Kill the docker container after you are done with `^c`.
 
 ---
 CSS credits: html5up.net

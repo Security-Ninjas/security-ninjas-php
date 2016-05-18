@@ -24,10 +24,9 @@
 		<!-- Nav -->
 			<nav id="nav">
 				<ul class="container">
-					<img src="images/ninja.png" alt="" width="8.5%" height="8.5%" align="left" />
 					<li><a href="a1.html">A1</a></li>
 					<li><a href="a2.html">A2</a></li>
-					<li><a href="a3.html">A3</a></li>
+					<li><a href="a3.html" class="active">A3</a></li>
 					<li><a href="a4.html">A4</a></li>
 					<li><a href="a5.html">A5</a></li>
 					<li><a href="a6.html">A6</a></li>
@@ -35,16 +34,12 @@
 					<li><a href="a8.html">A8</a></li>
 					<li><a href="a9.html">A9</a></li>
 					<li><a href="a10.html">A10</a></li>
-					<!-- <li><img src="images/opendns_logo.png" alt="" width="65.5%" height="65.5%" align="right" /> -->
 				</ul>
 			</nav>
 
 		
 			<div class="wrapper style2">
 				<article id="work">
-					<header>
-						<h5>A3 : Stored Cross-Site Scripting (XSS)</h5>
-					</header>
 					<div class="container">
 							<?php
 $myfile = fopen("comments.txt", "a") or die("Unable to open file!");
@@ -64,11 +59,37 @@ fwrite($myfile, " ");
 				</article>
 			</div>
 
-		
-		<!-- Contact -->
 			<div class="wrapper style4">
 				<article id="contact" class="container small">
-					
+					<header>
+						<p>Mission: Create a reflected XSS URL that redirects to:<br/>
+						/hacked_users.php</p>
+					</header>
+					<div>
+						
+						<div class="row">
+							<div class="12u">
+							<ul>
+							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'hint1');"> Hint 1 </H5>
+							<DIV id="hint1" style="display:none">
+							<P>
+							Inject a script in the text box.
+							</P>
+							</DIV></li>
+
+							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'solution');"> Solution </H5>
+							<DIV id="solution" style="display:none">
+							<P>
+							Enter any malicious JavaScript code in the text box:<br/>
+							&lt;script&gt;window.location.href = &quot;/unlucky.php&quot;;&lt;/script&gt;<br/>
+							Observe the resulting URL in your proxy.</br>
+							</P>
+							</DIV></li>
+							
+							</ul>
+							</div>
+						</div>
+					</div>
 					<footer>
 						<ul id="copyright">
 							<li>&copy; OpenDNS. All rights reserved.</li><li><a href="http://engineering.opendns.com/security/" target="_blank">OpenDNS Security</a></li>
@@ -76,7 +97,6 @@ fwrite($myfile, " ");
 					</footer>
 				</article>
 			</div>
-
 	</body>
 </html>
 
