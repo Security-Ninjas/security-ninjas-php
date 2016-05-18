@@ -11,7 +11,7 @@ This iteration of the course has been updated from the [original verion](https:/
 
 2. Start the container by running the following command (select an appropriate host port, 8000 here):
 
-    docker run -it --rm -p 8000:80 cniemira/security-ninjas
+    docker run -it --rm -p 8000:80 siege/security-ninjas
 
 3. Determine the IP address of your container
     Likely, 'localhost' will do. If you're using 'docker-machine' you will need to determine the VM IP.

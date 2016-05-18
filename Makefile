@@ -1,4 +1,4 @@
-TAG = cniemira/security-ninjas:latest
+TAG = siege/security-ninjas:latest
 NOW = $(shell /bin/date '+%Y%m%d-%H%M')
 PORT = 8000
 
